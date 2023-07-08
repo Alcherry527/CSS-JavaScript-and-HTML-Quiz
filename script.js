@@ -9,11 +9,13 @@ var myquestions = [
 
     }
 
-]
+];
 
 
 
 function generatequiz {
+
+    var output
     //code
 
 

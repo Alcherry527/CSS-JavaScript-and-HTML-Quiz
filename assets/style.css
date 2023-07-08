@@ -1,0 +1,33 @@
+.quiz {
+    margin-top: 50px;
+    justify-content: left;
+    align-items: center;
+}
+
+.questions {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.answers {
+    font-size: 15px;
+    color: white;
+    background-color: blueviolet;
+    border-radius: 5px;
+    align-content: space-between;
+}
+
+.answers:hover {
+    background-color: orchid;
+}
+
+button {
+    color: white;
+    background-color: blueviolet
+}
+
+#results {
+    font-size: 15px;
+    color: black;
+}
