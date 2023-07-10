@@ -1,7 +1,30 @@
-.quiz {
-    margin-top: 50px;
-    justify-content: left;
+.header {
+    margin-top: 10px;
+    width: 100%;
     align-items: center;
+}
+
+.header h1 {
+    display: inline-block;
+    font-size: 15px;
+    color: blueviolet;
+    align-items: center;
+}
+
+.header h2 {
+    float: right;
+    font-size: 20px;
+    color: black;
+    align-items: center;
+}
+
+#quiz {
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .questions {

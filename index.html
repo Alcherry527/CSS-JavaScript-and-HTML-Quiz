@@ -1,31 +1,26 @@
-< !DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HTML, CSS, and Javascript Quiz</title>
-        <link rel="stylesheet" href="./assets/style.css" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, CSS, and Javascript Quiz</title>
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
 
-    <body>
-        <header id="header">
-            <H1> View High Scores</H1>
-            // timer
-        </header>
-        <main class="quiz">
-            <div class="questions" id="ques"></div>
-            <div class="answers" id="ans"></div>
-            <button onClick="checkAns()" id="btn">GetResults</button>
-
-            <div id="results"></div>
-        </main>
-
-        </script>
-
-
+<body>
+    <header class="header">
+        <h1>View High Scores></h1>
+        <h2>Timer</h2>
+    </header>
+    <main id="quiz">
+        <div class="questions" id="ques"></div>
+        <div class="answers" id="ans"></div>
+        <button onclick="checkAns()" id="btn">GetResults</button>
+        <div id="results"></div>
         <script src="script.js"></script>
+    </main>
 
-    </body>
+</body>
 
-    </html>
+</html>
