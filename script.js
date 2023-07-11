@@ -66,7 +66,11 @@ function loadQues() {
 }
 
 loadQues();
-
+//store the number correct 
+function loadScore() {
+    const totalScore = document.getElementById("results")
+    totalScore.textContent = `You scored ${score} out of ${Questions.length}`
+}
 // move to next question
 function nextQuestion() {
     console.log({ currQ })
@@ -77,9 +81,10 @@ function nextQuestion() {
         document.getElementById("ans").remove()
         document.getElementById("ques").remove()
         document.getElementById("btn").remove()
+        loadScore();
     }
 }
-//check answers
+//check answers and display after the clicked button correct or incorrect
 function checkAns() {
     const selectedAns = parseInt(document.querySelector('input[name="answer"]:checked').value);
 
@@ -90,13 +95,8 @@ function checkAns() {
     } else {
         nextQuestion();
     }
-
 }
 
-function loadScore() {
-    const totalScore = document.getElementById("score")
-    totalScore.textContent = `You scored ${score} out of ${Questions.length}`
-}
 //generate timer and get to start 
 
 function Countdown() {
@@ -118,7 +118,9 @@ function Countdown() {
 }
 document.getElementById("btn").addEventListener("click", function () {
     checkAns();
+})
+//display time left and keep score and time left stored for high scores
 
-    //display time left and keep score and time left stored for high scores
-
+document.getElementById("highS").addEventListener("click", function () {
+    loadScore
 })
