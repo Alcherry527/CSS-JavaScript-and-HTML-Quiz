@@ -23,12 +23,18 @@ var Questions = [
         q: "Variables are case sensitive",
         a: [{ text: "true", isCorrect: false },
         { text: "false", isCorrect: true },
-        ]
+        { text: "neither", isCorrect: false },]
+    },
+    {
+        q: "Variables are blue",
+        a: [{ text: "true", isCorrect: false },
+        { text: "false", isCorrect: true },
+        { text: "neither", isCorrect: false },]
     }
 ]
 
 //show questions and answers
-let currQuestion = 0
+let currQ = 0
 var score = 0
 
 // move from displaying first question to the next
@@ -37,10 +43,12 @@ function loadQues() {
     const question = document.getElementById("ques")
     const opt = document.getElementById("ans")
 
-    question.textContent = Questions[currQuestion].q;
-    ans.innerHTML = ""
+    question.textContent = Questions[currQ].q;
+    //ans.innerHTML = ""
+    opt.innerHTML = ""
 
-    for (let i = 0; i < Questions[currQuestion].a.length; i++) {
+    // add radio buttons
+    for (let i = 0; i < Questions[currQ].a.length; i++) {
         const choicesdiv = document.createElement("div");
         const choice = document.createElement("input");
         const choiceLabel = document.createElement("label");
@@ -49,7 +57,7 @@ function loadQues() {
         choice.name = "answer";
         choice.value = i;
 
-        choiceLabel.textContent = Questions[currQuestion].a[i].text;
+        choiceLabel.textContent = Questions[currQ].a[i].text;
 
         choicesdiv.appendChild(choice);
         choicesdiv.appendChild(choiceLabel);
@@ -59,9 +67,11 @@ function loadQues() {
 
 loadQues();
 
+// move to next question
 function nextQuestion() {
-    if (currQuestion < Questions.length - 1) {
-        currQuestion++;
+    console.log({ currQ })
+    if (currQ < Questions.length - 1) {
+        currQ++;
         loadQues();
     } else {
         document.getElementById("ans").remove()
@@ -69,17 +79,18 @@ function nextQuestion() {
         document.getElementById("btn").remove()
     }
 }
-
+//check answers
 function checkAns() {
     const selectedAns = parseInt(document.querySelector('input[name="answer"]:checked').value);
 
-    if (Questions[currQuestion].a[selectedAns].isCorrect) {
+    if (Questions[currQ].a[selectedAns].isCorrect) {
         score++;
         console.log("Correct")
         nextQuestion();
     } else {
         nextQuestion();
     }
+
 }
 
 function loadScore() {
@@ -105,9 +116,9 @@ function Countdown() {
         }
     }, 1000);
 }
+document.getElementById("btn").addEventListener("click", function () {
+    checkAns();
 
-addEventListener(click, function () {
     //display time left and keep score and time left stored for high scores
 
-}
-)
+})
