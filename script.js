@@ -8,8 +8,12 @@
 //make timer start with start of quiz
 //store score and time to complete
 //display high scores
-
-
+var flash;
+var timeLeft = 60;
+var timerEl = document.getElementById('countdown');
+var endScreen = document.querySelector('.EndContainer');
+var inputEl = document.querySelector("#input");
+var initialsBtn = document.getElementById("initials-btn");
 
 var Questions = [
     {
@@ -40,6 +44,7 @@ var score = 0
 // move from displaying first question to the next
 
 function loadQues() {
+    Countdown()
     const question = document.getElementById("ques")
     const opt = document.getElementById("ans")
 
@@ -90,18 +95,31 @@ function checkAns() {
 
     if (Questions[currQ].a[selectedAns].isCorrect) {
         score++;
+        var correctEl = document.querySelector(".correct")
+        clearTimeout(flash)
+        correctEl.textContent = "Correct"
+        correctEl.classList.remove("Hide")
+        flash = setTimeout(function () {
+            correctEl.classList.add("Hide")
+        }, 1000)
+
         console.log("Correct")
         nextQuestion();
     } else {
+
+        //do same thing as above for incorrect
         nextQuestion();
+    }
+    if (Questions.length > currQ) {
+        nextQuestion()
+    } else {
+        displayEndScreen()
     }
 }
 
 //generate timer and get to start 
 
 function Countdown() {
-    var timerEl = document.getElementById('countdown');
-    var timeLeft = 60;
     var timeInterval = setInterval(function () {
         if (timeLeft > 1) {
             timerEl.textContent = timeLeft + ' seconds remaining';
@@ -112,10 +130,30 @@ function Countdown() {
         } else {
             timerEl.textContent = '';
             clearInterval(timeInterval);
-            displaytimeLeft;
+            displayEndScreen();
         }
     }, 1000);
 }
+function displayEndScreen() {
+    endScreen.classList.remove("Hide")
+}
+// storing scores
+function savescore() {
+    var initials = inputEl.value.trim()
+    var storedScores = JSON.parse(localStorage.getItem("storedScores")) || []
+    var newScore = {
+        initials: initials,
+        score: score,
+    }
+    storedScores.push(newScore)
+    localStorage.setItem("storedScores", JSON.stringify(storedScores))
+
+}
+
+initialsBtn.addEventListener("click", function () {
+    savescore()
+    inputEl.value = ""
+})
 document.getElementById("btn").addEventListener("click", function () {
     checkAns();
 })

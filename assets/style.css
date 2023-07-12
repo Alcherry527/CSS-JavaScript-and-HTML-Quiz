@@ -45,6 +45,11 @@
     background-color: orchid;
 }
 
+.Hide {
+    display: none;
+
+}
+
 button {
     color: white;
     background-color: blueviolet
