@@ -9,9 +9,27 @@
 
 + you will note that the timer button starts after the user clicks the start quiz button, and that the answer buttons change color when the user hovers over them. This functionality shows knowledge of css and javascript outside of the knowledge shown with the quiz responses.
 
+The following animation demonstrates what the application should do when it is complete:
+
+![An interviewee clicks through a timed coding quiz. At the end they will enters their initials to save the high score.](./assets/04-web-apis-homework-demo.gif)
+
 ## Technologies used by July 12 2023
 
 * html
 * css
 * javascript
+
+## Credits
+
+I was aided by the following TAs: 
+
++ Wesley CLements, Clarence C, and Rene Trevino
+
+And our Instructor who provided the above Demo:
+
++ Mark Carlson
+https://github.com/mark-carlson
+
+Aminah Cherry
+https://github.com/Alcherry527
 
