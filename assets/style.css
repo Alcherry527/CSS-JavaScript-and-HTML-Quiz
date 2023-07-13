@@ -18,6 +18,7 @@
     align-items: center;
 }
 
+
 #quiz {
     margin-top: 50px;
     justify-content: center;
@@ -48,6 +49,11 @@
 .Hide {
     display: none;
 
+}
+
+    {
+    color: white;
+    background-color: blueviolet
 }
 
 button {

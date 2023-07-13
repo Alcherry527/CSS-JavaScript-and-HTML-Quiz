@@ -1,12 +1,12 @@
 //Generate quiz
-
+//start quiz button loads quiz and replaces paragraph text
 //come up with questions (put in an object inside a string?)
 //come up with answers
 //link questions to answers
 //with each selection change the question/answers combo
 //display total score
 //make timer start with start of quiz
-//store score and time to complete
+//store scores
 //display high scores
 var flash;
 var timeLeft = 60;
@@ -30,9 +30,9 @@ var Questions = [
         { text: "neither", isCorrect: false },]
     },
     {
-        q: "Variables are blue",
-        a: [{ text: "true", isCorrect: false },
-        { text: "false", isCorrect: true },
+        q: "functions are called with",
+        a: [{ text: "parenthesis", isCorrect: true },
+        { text: "dollar signs", isCorrect: false },
         { text: "neither", isCorrect: false },]
     }
 ]
@@ -76,7 +76,7 @@ function loadScore() {
     const totalScore = document.getElementById("results")
     totalScore.textContent = `You scored ${score} out of ${Questions.length}`
 }
-// move to next question
+// move to next question this is skipping a question now
 function nextQuestion() {
     console.log({ currQ })
     if (currQ < Questions.length - 1) {
@@ -87,9 +87,10 @@ function nextQuestion() {
         document.getElementById("ques").remove()
         document.getElementById("btn").remove()
         loadScore();
+        displayEndScreen;
     }
 }
-//check answers and display after the clicked button correct or incorrect
+//messes up here check answers and display after the clicked button correct or incorrect- this is causing skipping
 function checkAns() {
     const selectedAns = parseInt(document.querySelector('input[name="answer"]:checked').value);
 
@@ -106,13 +107,16 @@ function checkAns() {
         console.log("Correct")
         nextQuestion();
     } else {
-
-        //do same thing as above for incorrect
+        var incorrectEl = document.querySelector(".incorrect")
+        clearTimeout(flash)
+        incorrectEl.textContent = "Incorrect"
+        incorrectEl.classList.remove("Hide")
+        flash = setTimeout(function () {
+            incorrectEl.classList.add("Hide")
+        }, 1000)
         nextQuestion();
     }
-    if (Questions.length > currQ) {
-        nextQuestion()
-    } else {
+    if (currQ > Questions.length) {
         displayEndScreen()
     }
 }
@@ -157,8 +161,23 @@ initialsBtn.addEventListener("click", function () {
 document.getElementById("btn").addEventListener("click", function () {
     checkAns();
 })
-//display time left and keep score and time left stored for high scores
+// keep scores for high scores and display with button click
 
 document.getElementById("highS").addEventListener("click", function () {
-    loadScore
+    var highScores = JSON.parse(localStorage.getItem("storedScores"))
+    for (let index = 0; index < highScores.length; index++) {
+        const element = highScores[index];
+
+    }
+
 })
+
+function hide() {
+
+    var button = document.getElementById('hide');
+    button.style.display = "none";
+
+    var start = document.getElementsByClassName("start");
+    start.style.display = "none";
+
+}
